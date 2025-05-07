@@ -25,5 +25,6 @@ public class Item {
     private String imgUrl;
 
     private Integer count;
+
 }
 
