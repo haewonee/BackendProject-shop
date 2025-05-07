@@ -45,6 +45,7 @@ public class ItemController {
     public String detail(@PathVariable Long id,Model model) {
         Optional<Item> result = itemService.getItem(id);
         List<Comment> comment = commentService.getComment(id);
+
         if(result.isPresent()){
             model.addAttribute("data",result.get());
             model.addAttribute("comment",comment);

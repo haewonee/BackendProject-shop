@@ -13,10 +13,9 @@
 <div th:replace="~{nav.html::navbar}"></div>
 <h4>마이페이지</h4>
 
-<div sec:authentication="principal"></div>
-<div sec:authentication="principal.username"></div>
+<span sec:authentication="principal.username"></span>님
 <div sec:authorize="isAuthenticated()">
-    <h4>이 유저는 로그인함</h4>
+    <h4>이 유저는 로그인함(권한 확인용)</h4>
 </div>
 
 </body>

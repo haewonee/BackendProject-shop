@@ -11,10 +11,16 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.List;
+import java.util.Scanner;
+
 @RequiredArgsConstructor
 @Controller
 public class CommentController {
     private final CommentService commentService;
+    private final CommentRepository commentRepository;
+
+
     @PostMapping("/comment")
     public String postComment(@RequestParam String content,
                               @RequestParam Long parent, Authentication auth){

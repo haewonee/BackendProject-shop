@@ -32,7 +32,7 @@
 </form>
 <hr>
     <div th:each="item : ${comment}">
-        <div th:text="${item.}">작성자</div>
+        <div th:text="${item != null && item.member != null ? item.member.displayName : '알 수 없음'}">작성자</div>
         <div th:text="${item.content}">댓글 내용</div>
 
         <hr>
