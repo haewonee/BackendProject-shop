@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="/main.css" rel="stylesheet">
+
+</head>
+<body>
+<div th:replace="~{nav.html::navbar}"></div>
+<h4>새로 가입해도 쿠폰안줌</h4>
+<form action="/member" method="POST">
+
+    <input name="displayName" placeholder="이름">
+    <input name="username" placeholder="아이디">
+    <input name="password" type="password">
+    <button type="submit">전송</button>
+</form>
+
+</body>
+</html>

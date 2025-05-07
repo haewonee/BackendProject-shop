@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link href="/main.css" rel="stylesheet">
+</head>
+<body>
+<div th:replace="~{nav.html::navbar}"></div>
+
+<div class="detail">
+    <h4>상세페이지</h4>
+    <img th:src="${data.imgUrl !=null && data.imgUrl!='' ? data.imgUrl : 'https://placehold.co/300'}">
+    <h4 th:text="${data.title}">금도금 바지</h4>
+    <p th:text="${data.price + '원'}">7억</p>
+</div>
+<form action="/order" method="post" style="text-align:center">
+    <input name="id" th:value="${data.id}" style="display:none">
+    <input name="title" th:value="${data.title}" style="display:none">
+    <input name="price" th:value="${data.price}" style="display:none">
+    <input name="count" placeholder="count" style="display: inline">
+    <button>주문하기</button>
+</form>
+
+<form action="/comment" method="POST">
+    <input name="content">
+    <input name="parent" th:value="${data.id}" style="display:none">
+    <button>리뷰작성</button>
+</form>
+<hr>
+    <div th:each="item : ${comment}">
+        <div th:text="${item.}">작성자</div>
+        <div th:text="${item.content}">댓글 내용</div>
+
+        <hr>
+    </div>
+
+</body>
+</html>

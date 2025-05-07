@@ -1,10 +1,15 @@
-package com.apple.shop;
+package com.apple.shop.item;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 import lombok.ToString;
 
 @ToString
 @Entity
+@Getter
+@Setter
+@Table(indexes = @Index(columnList = "title",name = "작명"))
 public class Item {
 
     @Id
@@ -14,5 +19,11 @@ public class Item {
     private String title;
 
     private Integer price;
+
+    private String username;
+
+    private String imgUrl;
+
+    private Integer count;
 }
 

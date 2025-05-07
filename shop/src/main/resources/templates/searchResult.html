@@ -15,15 +15,14 @@
     <button>검색</button>
 </form>
 <div class="card" th:each="i : ${items}">
-    <img th:src="${#strings.isEmpty(i.imgUrl)} ? 'https://placehold.co/300' : ${i.imgUrl}">
+    <img th:src="${i.imgUrl != null} ? ${i.imgUrl} : 'https://placehold.co/300'">
 
     <div>
-        <a th:href="@{'/detail/' +${i.id}}">
-            <h4 th:text="${i.title}">바지</h4></a>
-<!--        <a th:href="@{'/detail/' +${i.id}}">링크</a>-->
+        <h4 th:text="${i.title}">바지</h4>
+        <a th:href="@{'/detail/' +${i.id}}">링크</a>
         <p th:text="${i.price}">7억</p>
         <a th:href="@{'/edit/' + ${i.id}}">✏️</a>
-  <span th:onclick="fetch('/item?id=[[${i.id}]]', {
+        <span th:onclick="fetch('/item?id=[[${i.id}]]', {
           method: 'DELETE'
       })
        .then(r=>r.text())
@@ -33,13 +32,13 @@
 
     </div>
 </div>
-<div class="pagination" th:if="${count != null}">
-    <a th:each="pageNum : ${#numbers.sequence(1, count)}"
-       th:href="@{'/list/page/' + ${pageNum}}"
-       th:text="${pageNum}"
-       style="margin: 0 5px; text-decoration: none;">
-    </a>
-</div>
+<!--<div class="pagination" th:if="${count != null}">-->
+<!--    <a th:each="pageNum : ${#numbers.sequence(1, count)}"-->
+<!--       th:href="@{'/search/page/' + ${pageNum} + ${searchText}}"-->
+<!--       th:text="${pageNum}"-->
+<!--       style="margin: 0 5px; text-decoration: none;">-->
+<!--    </a>-->
+<!--</div>-->
 
 
 </body>
